@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+
+RewriteRule ^(.*)/(.*)/(.*) __index.php?location=$1&v2=$2&v3=$3 [NC,L]
+RewriteRule ^(.*)/(.*) __index.php?location=$1&v2=$2 [NC,L]
+RewriteRule ^(.*) __index.php?location=$1 [NC,L]

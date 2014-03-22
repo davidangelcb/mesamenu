@@ -1,0 +1,53 @@
+#menus{
+    overflow: auto;
+}
+#menus #choose  {
+    width: 180px;
+    padding: 0;
+}
+#menus #choose li{
+    margin: 0 auto;
+    padding: 0;
+    width: 180px;
+    list-style-type: none;
+    display: inline-block;
+}
+#menus #choose li #seleccionado{
+    cursor: pointer;
+    padding: 2px 5px;
+}
+#menus #choose li #selector{
+    padding-left: 10px;
+    cursor: pointer;
+}
+#menus nav{    
+    background-color: #FFFFFF;
+    width: 180px;
+}
+#menus nav ul{
+    background-color: #FFFFFF;
+    margin:0 auto;
+    padding: 0;
+    text-align: left;
+    list-style-type: none;
+}
+#menus nav ul li{
+    background-color: red;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    width: 180px;
+}
+#menus nav ul li img{
+    height: 14px;
+    margin: 0 auto;
+    padding: 0 0;
+    list-style-type: none;
+    cursor: pointer;
+}
+menus nav ul li img:hover{
+    border: 1px dotted #E5E5E5;
+}
+.hand{
+    cursor: pointer;
+}

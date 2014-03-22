@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>            
+            .arrow-after {
+                width:0px;
+                height:0px;
+                border-left: 6px solid transparent;  /* izquierda flecha */
+                border-right: 6px solid transparent; /* derecha flecha */
+                border-top: 6px solid #282828; /* base flecha y color*/                
+                font-size:0px;
+                line-height:0px;
+                top: 0px;
+                left: 4px;
+                position: relative;
+            }
+            .arrow-left {
+                width: 0;
+                height: 0;
+                border-top: 7px solid transparent;
+                border-right: 12px solid #000;
+                border-bottom: 7px solid transparent;
+            }
+            .arrow-right {
+                width: 0;
+                height: 0;
+                border-top: 6px solid transparent;
+                border-left: 12px solid #282828;
+                border-bottom: 6px solid transparent;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 100px;
+                font-size: 11px;
+                text-align: center;
+                padding:5px;  /* dejamos una separación entre borde y texto */
+                font-family: verdana;
+                background-color: #282828;
+                color: #FFF;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }           
+        </style>
+    </head>
+    <body>
+        <div class="container">Hola Mundo!</div>
+        <div class="arrow-after"></div>
+        <br/><br/><br/>
+        <div style="background-color: blue;">
+            <div class="container" style="display: inline-block;" >Hola Mundo!</div>
+            <div class="arrow-right" style="display: inline-block;" ></div>
+        </div>
+    </body>
+</html>
