@@ -1,4 +1,5 @@
 <?php
+require 'lib/config.php';
   /*require 'config.php';
   require 'bd_access.php';/*
   $conexion=mysql_connect("localhost","asumenu","tJVo4zACwI4Z") or die("Problemas en la conexion");
@@ -6,6 +7,16 @@
   $clavebuscadah = mysql_query("select id,name from dishes") or die("Problemas en el select1:" . mysql_error()); */
 $_SESSION['master'] = base64_encode(md5(microtime() . "sderfd") . md5(microtime() . "tegvfwcrebtneh"));
 $randomize = rand(1, 10);
+
+/* categorias o tipos de platos*/
+$query="select * from sections  where status='E'";
+$categorias = DdMesaMenu::fetchAll($query);
+
+/* Pasies de menudencia */
+$query2="select * from countrys where estatus='S' order by 1 desc";
+$paises = DdMesaMenu::fetchAll($query2);
+
+
 
 ?>
 <!DOCTYPE HTML>
@@ -21,17 +32,37 @@ $randomize = rand(1, 10);
         <meta property="og:description" content="El sitio mas delicioso del Internet" />
         <meta property="og:image" content="http://mesamenu.com/images/shared-mesamenu.png" />
         
-        <link rel="stylesheet" href="js/libs/normalize-2.0.1/normalize.css">
-        <link rel="stylesheet" href="css/styles.css"/>
-        <link rel="stylesheet" href="css/icons.css"/>
+        <link rel="stylesheet" href="<?php echo BASE_HOME;?>js/libs/normalize-2.0.1/normalize.css">
+        <link rel="stylesheet" href="<?php echo BASE_HOME;?>css/styles.css"/>
+        <link rel="stylesheet" href="<?php echo BASE_HOME;?>css/icons.css"/>
         <link rel="icon" href="favicon.ico" type="image/x-icon" />        
-        <script src="js/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.ddslick.min.js"></script>
-        <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>        
+        <script src="<?php echo BASE_HOME;?>js/jquery-1.8.3.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_HOME;?>js/jquery.ddslick.min.js"></script>
+        <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>  
+        <link rel="stylesheet" href="<?php echo BASE_HOME;?>css/colorbox.css" />
+
+        <script src="<?php echo BASE_HOME;?>js/jquery.colorbox.js"></script>        
+        <script type="text/javascript" src="<?php echo BASE_HOME;?>js/facebook.js"></script> 
+        <script type="text/javascript" src="<?php echo BASE_HOME;?>js/functions.js"></script>
+        <script>
+        var idUser = "";     
+        function createLoginFace(foto, nombre){
+            var html ="";
+            html = "<div style='position:relative; width:280px;height:50px;top:-10px'>";
+            html += '<div style="position:absolute;top:-10px:left:200px;margin-left:200px; ;height:50px; width:50px;"><img title="'+nombre+'" src="'+foto+'" style="border-radius:50%"/></div>';
+            html += '<div><img  style="margin-top:25px;margin-right:10px;" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
+            html += menu;
+            html += '</div>';            
+            return html;
+        }
+        //<p><a class='iframe' href="http://wikipedia.com">Outside Webpage (Iframe)</a></p>
+                
+        </script>
     </head>
-    <body>
-        <?php require_once 'header.php'; ?>
+    <body style="margin-bottom: 10px">
+        <?php require_once  HOME_DIR.'header.php'; ?>
 
         <section id="content">
 
@@ -39,21 +70,37 @@ $randomize = rand(1, 10);
             </article>
             <input type="hidden" id="categoria"/>
             
-            <?php require_once 'include/_favorite.php'; ?>
+            <?php require_once HOME_DIR.'include/_favorite.php'; ?>
             
-            <?php require_once '_includeAboutUs.php'; ?>
+            <?php require_once HOME_DIR.'_includeAboutUs.php'; ?>
 
-            <?php require_once '_includeSponsors.php'; ?>
+            <?php require_once HOME_DIR.'_includeSponsors.php'; ?>
             
-            <?php require_once '_includeAsu.php'; ?>
+            <?php require_once HOME_DIR.'_includeAsu.php'; ?>
 
 
         </section>
         
-            <?php require_once 'footer.php'; ?>
+            <?php require_once HOME_DIR.'footer.php'; ?>
         
         <script>            
-            
+        function getIdLogin(idLogin){
+            if(idLogin){
+                $.ajax({
+                        url: "<?php echo HOME_DIR;?>ajax.php",
+                        type: 'post',
+                        data: {cmd: 'getIdLogin_',id: idLogin},
+                        success: function(response) {
+                            var xx = response.split('[|@|@|]');                        
+                            if (xx[0] == 'OK') {
+                                idUser=xx[1]; 
+                            } else{ 
+                                alert("Error: Please try later, CODE 152!");
+                            }                        
+                        }
+                    });
+            }
+        }            
             /*****************************************************************/
             var sourceSwap = function () {
                 var $this = $(this);
@@ -74,7 +121,7 @@ $randomize = rand(1, 10);
                     return false;
                 }
                 $.ajax({
-                    url: "ajax.php",
+                    url: "<?php echo HOME_DIR;?>ajax.php",
                     type: 'post',
                     data: {cmd: 'sendMail',name: $('#name').val(),email:$('#email').val()},
                     beforeSend: function(){
@@ -94,12 +141,22 @@ $randomize = rand(1, 10);
             }
             
         /******************************************************/
-            
-            function getSlides(sel) {
+            function setModalOpen(){
+                $(".iframe").colorbox({iframe:true, width:"60%", height:"70%",onClosed:verificaSession}); 
+            }
+            function verificaSession(){
+                //alert(123);
+            }
+            var LastSel=null;
+            var LastCiudad=null;
+            var OnlyHeard='NO';
+            function getSlides(sel,ciudad) {
+                LastSel=sel;
+                LastCiudad=ciudad;
                 $.ajax({
-                    url: "ajax.php",
+                    url: "<?php echo HOME_DIR;?>ajax.php",
                     type: 'post',
-                    data: {cmd: 'getSlides',dishes: sel},
+                    data: {cmd: 'getSlides',dishes: sel,city: ciudad,iduser:idUser,heard:OnlyHeard},
                     beforeSend: function(){
                         $("#content_images").html('Loading ...');
                     },
@@ -108,6 +165,8 @@ $randomize = rand(1, 10);
                         if (xx[0] == 'OK') {
                             //$("#seleccionado").attr('src',xx[2]);
                             $("#content_images").html(xx[1]);
+                            var ask =  setTimeout("setModalOpen()",1000);
+                             
                             /*$("#htmlselect-sections").ap*/                            
                             //$("#categoria").attr('value',xx[3]);
                         } else{
@@ -170,11 +229,20 @@ $randomize = rand(1, 10);
                                     
                 
                 $( "#vote" ).click(function() {
-                    $(this).attr('src','images/heart_over.png');
+                    if(OnlyHeard=='SI'){
+                        OnlyHeard='NO';
+                        $(this).attr('src','/images/heart.png');
+                    }else{
+                        OnlyHeard='SI';
+                        $(this).attr('src','/images/heart_over.png');                        
+                    }
+                    getSlides(LastSel,LastCiudad);
                 });
                 
                 /*****************************************************************/
-                
+                $( "#sharedFacebook" ).click(function() {
+                    login();
+                });
                 /*$("#sharedFacebook").on({
                     "mouseover" : function() {
                         $('#msjfacebook').show();
@@ -183,9 +251,9 @@ $randomize = rand(1, 10);
                         $('#msjfacebook').hide();
                     }
                 });*/                
-                $( "#sharedFacebook" ).click(function() {
+               /* $( "#sharedFacebook" ).click(function() {
                     window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href), 'facebook-share-dialog', 'width=626,height=436');
-                }); 
+                }); */
                 
                 
                 /*$("#sharedTwitter").on({
@@ -196,9 +264,9 @@ $randomize = rand(1, 10);
                         $('#msjtwitter').hide();
                     }
                 });*/
-                $( "#sharedTwitter" ).click(function() {
+               /* $( "#sharedTwitter" ).click(function() {
                     window.open('http://twitter.com/share?text='+encodeURIComponent("@mesamenu, " +" El sitio más delicioso del Internet"),'Popup','menubar=no,toolbar=no,height=290,width=600');                    
-                }); 
+                }); /*
                 
                 
                 /*$("#sharedGoogle").on({
@@ -282,7 +350,8 @@ $randomize = rand(1, 10);
                 $('#htmlselect-locations').ddslick({
                     onSelected: function(data){
                         valor = "_pm.png";
-                        $('#htmlselect-locations div a img').attr("src", "images/locations/"+data.selectedData.value+valor);
+                        $('#htmlselect-locations div a img').attr("src", "/images/locations/"+data.selectedData.value+valor);
+                        var ciudadText = data.selectedData.value;
                         if ((data.selectedData.value=='arequipa')||((data.selectedData.value=='cusco')) ){
                             $('#content_images').addClass('noFoundData');
                             $('#content_images').html('<br/><br/><br/><br/>Ups... en <b>'+data.selectedData.value+'</b>  aun no tenemos data disponible... :)');
@@ -292,12 +361,13 @@ $randomize = rand(1, 10);
                                 
                                 onSelected: function(datax){
                                     
-                                    $('#htmlselect-sections div a img').attr("src", "images/sections/"+datax.selectedData.value+valor);
-                                    
+                                    $('#htmlselect-sections div a img').attr("src", "/images/sections/"+datax.selectedData.value+valor);
+                                    LastSel=datax.selectedData.value;
+                                    LastCiudad=ciudadText;
                                     $.ajax({
-                                        url: "ajax.php",
+                                        url: "<?php echo HOME_DIR;?>ajax.php",
                                         type: 'post',
-                                        data: {cmd: 'getSlides',dishes: datax.selectedData.value},
+                                        data: {cmd: 'getSlides',dishes: datax.selectedData.value,city:ciudadText,iduser:idUser,heard:OnlyHeard},
                                         beforeSend: function(){
                                             $("#content_images").html('Loading ...');
                                         },
@@ -344,16 +414,10 @@ $randomize = rand(1, 10);
                                                         }
                                                     });
                                                     
-                                                    $('.item_dishes figure ol table tr td a #favorite').on({
-                                                        "click" : function (){
-                                                            //$('body').css({ filter:alpha(opacity=40), opacity:0.6});
-                                                            //$('#show_favorite').show();
-                                                            //alert('hola');
-                                                            showModal();
-                                                        }
-                                                    });
+                                                    
                                                     
                                                 },1000);
+                                                var ask =  setTimeout("setModalOpen()",1000);
                                             } else{
                                                 alert('errorororoororor');
                                             }
@@ -365,11 +429,7 @@ $randomize = rand(1, 10);
                             /*********************************************************************/
                         }                        
                     }
-                });                                                                              
-                
-                $("#favorite").onclick(function (){
-                    alert("hola ");
-                });                                
+                });                              
                 /*for 4 icons*/                                
                 /*********************************************************************/
                 function showModal(){		
@@ -389,12 +449,63 @@ $randomize = rand(1, 10);
                     $('#bgtransparent').hide();
                     alert('bbbb');
                 }
-            })
-            
-            getSlides(<?php echo $randomize; ?>);
+            });
+            var facebookShare = function(url){
+               
+                    window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url), 'facebook-share-dialog', 'width=626,height=436');
+                
+            };
+            var BookMark = function(thiss, idplato){
+               if(idUser==""){
+                   alert("Please Login firsts!");
+                   return;
+                   //alert($(thiss).attr("data-alt-src"));
+               }else{
+                   var dato="";
+                   var status =  $(thiss).attr("status");
+                   var statusN='';
+                   if(status=='N'){
+                       dato= "Was added to Bookmarks";
+                       statusN='Y';
+                   }else{
+                       dato= "Was removed to Bookmarks";
+                       statusN='N';
+                   } 
+                    var xd = thiss.id;
+                    var  srccActivo = $("#"+xd).attr("srcA");
+                    var  srccOver = $("#"+xd).attr("data-alt-srcA");
+                    if(statusN=='N'){
+                        $(thiss).attr("src",srccActivo); 
+                        
+                    }else{
+                        $(thiss).attr("src",srccOver);
+                        
+                    }
+                    $(thiss).attr("status",statusN);
+                    
+                    //saveBook
+                    //iduser  idplato
+                    $.ajax({
+                    url: "<?php echo HOME_DIR;?>ajax.php",
+                    type: 'post',
+                    data: {cmd: 'saveBook',iduser: idUser,plato: idplato,estado:statusN},
+                        success: function(response) {
+                            var xx = response.split('[|@|@|]');
+                            if (xx[0] == 'OK') {
+                                 alert(dato);
+
+                            } else{
+                                alert(xx[1]);
+                            }
+
+                        }
+                    });
+               }
+            };
+            getSlides(<?php echo $randomize; ?>,'<?php echo CIUDADDEFAULT_ID; ?>');
         </script>
         <?php
-        require_once 'analytics.php';
+        require_once HOME_DIR.'analytics.php';
         ?>
     </body>      
 </html>

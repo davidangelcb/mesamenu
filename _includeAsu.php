@@ -2,7 +2,7 @@
     <div id="popupAsu">
         <div class="barClose barClosePopup">Close(x)</div>
         <div id="photoAsu">
-            <img src="images/asu_brand.png">
+            <img src="<?php echo HOME_DIR;?>images/asu_brand.png">
         </div>
         <p>
             Premia a los restaurantes que buscan y logran un nivel internacional , basandonos en:        
@@ -15,7 +15,7 @@
         </ul>
 
         <div id="contentAsu">
-            <div id="imgAsu"><img src="images/asu.png" height="120"><font><b>Placa para restaurants <br><br> premiados ASU</b></font></div>
+            <div id="imgAsu"><img src="<?php echo HOME_DIR;?>images/asu.png" height="120"><font><b>Placa para restaurants <br><br> premiados ASU</b></font></div>
             <div id="imgCaption"></div>
         </div>
     </div>

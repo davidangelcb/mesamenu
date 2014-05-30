@@ -1,31 +1,93 @@
 <?php
-
+require 'lib/config.php';
 date_default_timezone_set('America/Lima');
+function saveBook($data) {  
+    // iduser  idplato
+     $id="";
+     if(isset($data['iduser'])){
+        $user = DdMesaMenu::fetchOneBy('idusers = ? and idplato=?', 'favoritos', null, array($data['iduser'],$data['plato']));
+        $dat = date("Y-m-d H:i:s");
+        if(!$user){
+            
+            $params = array(
+               'id' => NULL,
+               'idusers' => $data['iduser'],
+               'dateup' => $dat,
+               'idplato' => $data['plato'],
+               'estado' => 'Y'
+             );
 
+           $id= DdMesaMenu::insert('favoritos', $params);
+        }else{
+            $params = array(
+                'estado' =>  $data['estado'],
+                'dateup' => $dat
+            );
+            DdMesaMenu::update('favoritos', $params, 'id = ?', $user['id']);
+        } 
+     }else{
+         return "FAIL[|@|@|]No se encontro el Usuario";
+     }
+    return "OK[|@|@|]".$id;
+}
+function getIdLogin($data) {  
+     $id="";
+     $user = DdMesaMenu::fetchOneBy('idfacebook = ?', 'users', null, $data['id']);
+     if(!$user){
+         $dat = date("Y-m-d H:i:s");
+         $params = array(
+            'id' => NULL,
+            'idfacebook' => $data['id'],
+            'dateup' => $dat,
+            'ip' => ''
+        );//tipo nuevos refund   ].'|||'.$msg
+        
+        $id= DdMesaMenu::insert('users', $params);
+     }else{
+         $id = $user['id'];
+     } 
+    return "OK[|@|@|]".$id;
+}
 function getSlides($data) {
-    $imageshtml = '';
-    $conexion = mysql_connect("localhost", "asumenu", "tJVo4zACwI4Z") or die("Problemas en la conexion");
-    mysql_select_db("asumenu", $conexion) or die("Problemas en la selección de la base de datos");
-    /* $clavebuscadah = mysql_query("select * from rest_dishes where iddishes=" . $data['dishes'], $conexion) or die("Problemas en el select1:" . mysql_error());
-
-      while ($row = mysql_fetch_array($clavebuscadah)) {
-      $imageshtml .= '<img src="images/dishes/' . $row['image'] . '" alt=""> ';
-      } */
-    //$query = "SELECT * FROM sections WHERE id=" . (int) $data['dishes'];
-    /*$query = "select rest_sections.image,restaurant.link,sections.name
-                from rest_sections 
-                inner join restaurant on rest_sections.idrestaurants=restaurant.id
-                inner join sections on rest_sections.idsections=sections.id
-                and rest_sections.idsections=" . (int) $data['dishes'] ." ORDER BY rand()";*/
-    $query = "select  * from seccion_lima where categoria = ".(int)$data['dishes']." and estatus='E' ORDER BY rand()";
-    $result = mysql_query($query);
+   $imageshtml = '';
+   $platos = array();
+   if(isset($data['iduser'])){
+       $user = DdMesaMenu::fetchOneBy('id = ?', 'users', null, $data['iduser']);
+        if($user){
+            $query = "select  * from favoritos where idusers=? and estado=?";
+            $resultS = DdMesaMenu::fetchAll($query,array($user['id'],'Y'));
+            foreach ($resultS as $rowF) {
+                $platos[$rowF['idplato']]=$rowF['id'];
+            }
+        }
+   } 
+    $query = "select  S.*, l.name from seccion_lima S  inner join locations l on l.id=S.departamento where S.categoria = ".(int)$data['dishes']." and l.name = '".$data['city']."'  and S.estatus='E' ORDER BY rand()";
+    
+    $result = DdMesaMenu::fetchAll($query);
     $imageshtml .= '<ul>';
-    if (mysql_num_rows($result) > 0) {
-        while ($row = mysql_fetch_array($result)) {
+    if ($result) {
+        foreach ($result as $row) {
+            $salta=true;
+            if(isset($data['iduser'])){
+                if(!isset($platos[$row['id']])){
+                    $tdBook= '<td id="cnt_favorite'.$row['id'].'"><span><img class="imgSRC" status ="N" onclick="BookMark(this,'.$row['id'].')" id="favorite'.$row['id'].'"   src="'.HOME_DIR.'images/earth.png"  srcA="'.HOME_DIR.'images/earth.png" data-alt-srcA="'.HOME_DIR.'images/earth_over.png" height="50" width="50"/></span></td>';
+                }else{
+                    $tdBook= '<td id="cnt_favorite'.$row['id'].'"><span><img class="imgSRC" status ="Y" onclick="BookMark(this,'.$row['id'].')" id="favorite'.$row['id'].'"   src="'.HOME_DIR.'images/earth_over.png"  srcA="'.HOME_DIR.'images/earth.png" data-alt-srcA="'.HOME_DIR.'images/earth_over.png" height="50" width="50"/></span></td>';
+                }
+            }
+            if(isset($data['iduser'])){
+                if(isset($data['heard']) && $data['heard']=='SI'){
+                    
+                    if(!isset($platos[$row['id']])){
+                        $salta=false;
+                    }
+                }
+            }
+            if($salta){
             $imageshtml .= '<li>
                                 <div class="item_dishes">
                                     <figure>
-                                        <img src="images/dishes/' . $row['imagen'] . '" alt=""/>                                                                                        
+                                        <img src="'.HOME_DIR.'images/dishes/' . $row['imagen'] . '" alt=""/>                                                                                        
                                         <ol style="position: absolute; top:70%;float:left;">
                                             <table border="0">
                                                 <tr>
@@ -43,7 +105,7 @@ function getSlides($data) {
                                                     </td>
                                                     <td>
                                                         <div class="msjshared">
-                                                            <div class="container-nube">Compartir</div>
+                                                            <div class="container-nube" >Compartir</div>
                                                             <div class="arrow-after"></div>
                                                         </div>
                                                     </td>
@@ -55,23 +117,24 @@ function getSlides($data) {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a><img id="table" src="images/table.png" height="50" width="50"/></a></td>
-                                                    <td><a><img id="cart" src="images/cart.png" height="50" width="50"/></a></td>
-                                                    <td><a><img id="shared" src="images/social.png" height="50" width="50"/></a></td>
-                                                    <td><a><img id="favorite" src="images/earth.png" data-alt-src="images/earth_over.png" height="50" width="50"/></a></td>
+                                                    <td><a><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
+                                                    <td><a><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
+                                                    <td><a class="iframe" href="'.HOME_DIR.'load_comentarios.php?idload='.$row['id'].'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
+                                                    '.$tdBook.'
                                                 </tr>
                                             </table>                                                                                        
                                         </ol>
                                     </figure>                            
                                 </div>
                            </li>';
+            }
         }
     } else {
-        $imageshtml .= '<li><a href="http://mesamenu.com/" target="_blank"><img src="images/dishes/none.jpg" alt=""></a></li>';
+        $imageshtml .= '<li><a href="http://mesamenu.com/" target="_blank"><img src="'.HOME_DIR.'images/dishes/none.jpg" alt=""></a></li>';
     }
     $imageshtml .= '</ul>';
     //return "OK[|@|@|]" . $imageshtml . "[|@|@|]" . "images/secciones/" . $row['name'] . ".png"."[|@|@|]".$row['name']."[|@|@|]".$data['dishes'];
-    return "OK[|@|@|]" . $imageshtml;
+    return "OK[|@|@|]" .$imageshtml;
 }
 
 function sendMail($data) {
@@ -128,6 +191,11 @@ switch ($_REQUEST['cmd']) {
 
     case 'sendMail': echo sendMail($_POST);
         break;
+    case 'getIdLogin_': echo getIdLogin($_POST);
+        break;
+    case 'saveBook': echo saveBook($_POST); break;
+    
+    
 }
 ?>
 

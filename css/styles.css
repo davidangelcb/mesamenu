@@ -16,6 +16,48 @@ body {
     min-height:100%;
     position:relative;
 }
+#boton_aparece_menu{
+        height: 30px;
+        line-height: 30px;
+        width: 70px;
+        background-color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        border:1px solid #d2d2d2;
+        border-radius:2px;
+        box-shadow:0 0 4px #d2d2d2;
+}
+
+#Div_menu{
+        position: absolute;
+        width: 70px;
+        background-color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #333;
+        font-weight: bold;
+        margin-top: 5px;
+        display: none;
+        z-index: 100;
+        border:1px solid #d2d2d2;
+        border-radius:2px;
+        box-shadow:2px 2px 4px #d2d2d2;
+        left: 200px;
+}
+.li_menu{
+        line-height: 25px;	
+        border-bottom: 1px solid #d2d2d2;
+        cursor: pointer;
+        padding-left: 10px;
+}
+.li_menu:hover{
+                background-color: #333333;	
+                color: #FFF;
+}   
 header {
     background: url("../images/nav_top.png") repeat-x;
     height: 55px;
@@ -40,7 +82,7 @@ header #grid #navleft{
     display: inline-block;
     height: auto !important;
     padding-top:1.1em;
-    padding-left: 1.5em;
+    padding-left: 1.0em;
 }
 header #grid #navleft ul{
     margin: 0 auto;
@@ -162,11 +204,10 @@ header #grid #navleft ul li #vote:hover{
 
 /*begin navmiddle*/
 header #grid #navmiddle{
-    width: 150px;
     display: inline-block;
-    height: auto !important;
     text-align: center;
-    padding:0.3em;
+    width: 45%;
+    margin-top: 7px;
 }
 header #grid #navmiddle ul li{
     margin: 0 auto;
@@ -193,13 +234,13 @@ header #grid #navmiddle ul li .unactive{
 /*end navmiddle*/
 
 header #grid #navright{
-    width: 20%;
+     display: inline-block;
     float: right;
-    display: inline-block;
     height: auto !important;
-    text-align: right;
-    padding-top: 0.7em;
     padding-right: 1.5em;
+    padding-top: 0.7em;
+    text-align: right;
+    width: 20%;
 }
 header #grid #navright ul li{
     margin: 0 auto;
@@ -517,11 +558,29 @@ header #grid ul .google{
     -webkit-border-radius: 100%;
     border:2px solid #E6E6E6;
 }  
-
-#content #content_images ul li .item_dishes ol  table tr td a:visited{  
-    color: white;  
-}  
-  
+#content #content_images ul li .item_dishes ol table tr td span{  
+    display:inline-block;  
+    text-align:center;  
+    text-decoration: none;
+    background-color: rgba(0, 0, 0,0.3);
+    color: white;
+    opacity:0.9;
+    filter:alpha(opacity=90); /* For IE8 and earlier */
+    margin: 0 5px;
+    width:55px;  
+    height:55px;  
+    border-radius: 100%; /*really large border radius to create round borders*/  
+    -moz-border-radius: 100%;  
+    -webkit-border-radius: 100%;
+    border:2px solid #E6E6E6;
+}
+.imgSRC{
+    
+    border-radius: 100%; /*really large border radius to create round borders*/  
+    -moz-border-radius: 100%;  
+    -webkit-border-radius: 100%;
+    
+}
 #content #content_images ul li .item_dishes ol  table tr td a:hover{  
     background-color: rgba(0, 0, 0,0.5);
     opacity:1;
@@ -542,8 +601,7 @@ header #grid ul .google{
     width: 100%;
     top: 0px;
     left: 0px;
-    height: auto!important;
-    border-bottom: 5px solid #FFF;
+    height: auto!important; 
 }
 #content #content_images ul li .item_dishes figure img:hover {
     cursor: pointer;

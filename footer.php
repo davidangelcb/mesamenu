@@ -1,6 +1,6 @@
 <footer>
     <a href="http://www.rolex.com/rolex-dealers/dealers-locator/retailers-details/joyeriamurguia.miraflores.lima.peru.rolexdealers.com" target="_blank">
-        <img src="images/barra_black.png"/>
+        <img src="<?php echo HOME_DIR;?>images/barra_black.png"/>
     </a>
     <ul>
         <li>

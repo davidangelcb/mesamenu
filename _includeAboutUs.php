@@ -5,7 +5,7 @@
         <p>Tenemos una clara e intransigente misión: Crear el sitio más deliciosa de el Internet! Un lugar donde se puede explorar diversos capiteles culinarias, un maravillos plato a la vez.</p>
         <h3>Danna Huaman Pantoja | <span>C M O</span></h3>
         <div id="Danna">                        
-            <div id="photoDanna"><img src="images/danna.png" height="100" /></div>
+            <div id="photoDanna"><img src="<?php echo HOME_DIR;?>images/danna.png" height="100" /></div>
             <div id="descriptionDanna">
                 <ul>
                     <li><b>Marketing</b></li>
@@ -20,7 +20,7 @@
 
         <h3>Olga Sánchez Miranda | <span>C O O</span></h3>
         <div id="Olga">                        
-            <div id="photoOlga"><img src="images/olga.png" height="100" /></div>
+            <div id="photoOlga"><img src="<?php echo HOME_DIR;?>images/olga.png" height="100" /></div>
             <div id="descriptionOlga">
                 <ul>
                     <li><b>Business Manager</b></li>
