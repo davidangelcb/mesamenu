@@ -62,7 +62,7 @@ $paises = DdMesaMenu::fetchAll($query2);
         </script>
     </head>
     <body style="margin-bottom: 10px">
-        <?php require_once  HOME_DIR.'header.php'; ?>
+        <?php require_once  HOME_DIRFILE.'header.php'; ?>
 
         <section id="content">
 
@@ -70,18 +70,18 @@ $paises = DdMesaMenu::fetchAll($query2);
             </article>
             <input type="hidden" id="categoria"/>
             
-            <?php require_once HOME_DIR.'include/_favorite.php'; ?>
+            <?php require_once HOME_DIRFILE.'include/_favorite.php'; ?>
             
-            <?php require_once HOME_DIR.'_includeAboutUs.php'; ?>
+            <?php require_once HOME_DIRFILE.'_includeAboutUs.php'; ?>
 
-            <?php require_once HOME_DIR.'_includeSponsors.php'; ?>
+            <?php require_once HOME_DIRFILE.'_includeSponsors.php'; ?>
             
-            <?php require_once HOME_DIR.'_includeAsu.php'; ?>
+            <?php require_once HOME_DIRFILE.'_includeAsu.php'; ?>
 
 
         </section>
         
-            <?php require_once HOME_DIR.'footer.php'; ?>
+            <?php require_once HOME_DIRFILE.'footer.php'; ?>
         
         <script>            
         function getIdLogin(idLogin){

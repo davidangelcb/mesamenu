@@ -3,10 +3,10 @@
         <div id="navleft">
             <ul>
                 <li>
-                    <?php require_once HOME_DIR.'locations.php'; ?>
+                    <?php require_once HOME_DIRFILE.'locations.php'; ?>
                 </li>                        
                 <li>
-                    <?php require_once HOME_DIR.'categoria.php'; ?>
+                    <?php require_once HOME_DIRFILE.'categoria.php'; ?>
                 </li>
                 <li><img id="vote" style="display: none" src="<?php echo HOME_DIR;?>images/heart.png"/></li>
             </ul>
