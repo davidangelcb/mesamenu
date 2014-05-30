@@ -26,7 +26,7 @@ defined('DB_TOOL_NAME') || define("DB_TOOL_NAME","mesamenu");
 if (APPLICATION_ENV == 'production' || defined('RUN_CRON')) {
     defined('PROTOCOL_TYPE') || define('PROTOCOL_TYPE', 'http://');
     defined('BASE_URL') || define('BASE_URL', 'http://test.perumenu.com');
-    defined('HOME_DIR') || define('HOME_DIR','/var/www/html/test.mesamenu/'); // link de inicio
+    defined('HOME_DIR') || define('HOME_DIR',''); // link de inicio
 
 } else {
     defined('PROTOCOL_TYPE') || define('PROTOCOL_TYPE', 'http://');
