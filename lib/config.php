@@ -18,25 +18,27 @@ if (APPLICATION_ENV == 'production' || defined('RUN_CRON')) {
 defined('WEB_MASTER_MAIL') || define("WEB_MASTER_MAIL","david@mayopi.com");
 // PATHS Y LINKS
 
-defined('HOME_FS_DIR') || define('HOME_FS_DIR',$_SERVER['DOCUMENT_ROOT'].HOME_DIR); // path de inicio
+
 // DB INFO
 defined('DB_TOOL_NAME') || define("DB_TOOL_NAME","mesamenu");
 
 
 if (APPLICATION_ENV == 'production' || defined('RUN_CRON')) {
     defined('PROTOCOL_TYPE') || define('PROTOCOL_TYPE', 'http://');
-    defined('BASE_URL') || define('BASE_URL', 'http://test.perumenu.com');
-    defined('HOME_DIR') || define('HOME_DIR','/var/www/html/test.mesamenu/'); // link de inicio
+    defined('HOME_DIRFILE') || define('HOME_DIRFILE','/var/www/html/test.mesamenu/'); // link de inicio
+    defined('BASE_URL') || define('BASE_URL', 'http://test.perumenu.com');   
+    defined('HOME_DIR') || define('HOME_DIR','/'); // link de inicio
     defined('BASE_HOME') || define("BASE_HOME",BASE_URL.'/');
 
 } else {
     defined('PROTOCOL_TYPE') || define('PROTOCOL_TYPE', 'http://');
+    defined('HOME_DIRFILE') || define('HOME_DIRFILE','/'); // link de inicio
     defined('BASE_URL') || define('BASE_URL', 'http://test.perumenu.dev');
     defined('HOME_DIR') || define('HOME_DIR','/'); // link de inicio
     defined('BASE_HOME') || define("BASE_HOME",BASE_URL.HOME_DIR);
 }
 
-
+defined('HOME_FS_DIR') || define('HOME_FS_DIR',$_SERVER['DOCUMENT_ROOT'].HOME_DIR); // path de inicio
 defined('PAISDEFAULT_ID') || define("PAISDEFAULT_ID",5);
 
 defined('CIUDADDEFAULT_ID') || define("CIUDADDEFAULT_ID","Lima");
