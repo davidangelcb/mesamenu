@@ -45,7 +45,7 @@ $paises = DdMesaMenu::fetchAll($query2);
 
         <script src="<?php echo BASE_HOME;?>js/jquery.colorbox.js"></script>        
         <script type="text/javascript" src="<?php echo BASE_HOME;?>js/facebook.js"></script> 
-        <script type="text/javascript" src="<?php echo BASE_HOME;?>js/functions.js"></script>
+        
         <script>
         var idUser = "";     
         function createLoginFace(foto, nombre){
@@ -504,6 +504,7 @@ $paises = DdMesaMenu::fetchAll($query2);
             };
             getSlides(<?php echo $randomize; ?>,'<?php echo CIUDADDEFAULT_ID; ?>');
         </script>
+        <script type="text/javascript" src="<?php echo BASE_HOME;?>js/functions.js"></script>
         <?php
         require_once HOME_DIR.'analytics.php';
         ?>
