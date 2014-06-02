@@ -1,5 +1,6 @@
 <?php
 require 'lib/config.php';
+ini_set("display_errors",1);
 date_default_timezone_set('America/Lima');
 function saveBook($data) {  
     // iduser  idplato
