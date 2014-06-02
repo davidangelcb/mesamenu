@@ -350,7 +350,7 @@ $paises = DdMesaMenu::fetchAll($query2);
                 $('#htmlselect-locations').ddslick({
                     onSelected: function(data){
                         valor = "_pm.png";
-                        $('#htmlselect-locations div a img').attr("src", "/images/locations/"+data.selectedData.value+valor);
+                        $('#htmlselect-locations div a img').attr("src", "/images/locations/"+data.selectedData.value.toUpperCase()+valor);
                         var ciudadText = data.selectedData.value;
                         if ((data.selectedData.value=='arequipa')||((data.selectedData.value=='cusco')) ){
                             $('#content_images').addClass('noFoundData');
