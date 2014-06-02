@@ -29,6 +29,7 @@ if (APPLICATION_ENV == 'production' || defined('RUN_CRON')) {
     defined('BASE_URL') || define('BASE_URL', 'http://test.mesamenu.com');   
     defined('HOME_DIR') || define('HOME_DIR','/'); // link de inicio
     defined('BASE_HOME') || define("BASE_HOME",BASE_URL.'/');
+    defined('FACEBOOK') || define("FACEBOOK",'639449806134336'); // tiempo maximo de inactividad (mins), SESS_TIME_LIMIT > 0 siempre
 
 } else {
     defined('PROTOCOL_TYPE') || define('PROTOCOL_TYPE', 'http://');
@@ -36,6 +37,7 @@ if (APPLICATION_ENV == 'production' || defined('RUN_CRON')) {
     defined('BASE_URL') || define('BASE_URL', 'http://test.perumenu.dev');
     defined('HOME_DIR') || define('HOME_DIR','/'); // link de inicio
     defined('BASE_HOME') || define("BASE_HOME",BASE_URL.HOME_DIR);
+    defined('FACEBOOK') || define("FACEBOOK",'648941031851880'); // tiempo maximo de inactividad (mins), SESS_TIME_LIMIT > 0 siempre
 }
 
 defined('HOME_FS_DIR') || define('HOME_FS_DIR',$_SERVER['DOCUMENT_ROOT'].HOME_DIR); // path de inicio
@@ -46,6 +48,8 @@ defined('CIUDADDEFAULT_ID') || define("CIUDADDEFAULT_ID","Lima");
 defined('SESS_COOKIE_NAME') || define("SESS_COOKIE_NAME","ARGEN_SESSID"); // nombre de la cookie de sesion
 defined('SESS_TIME_EXPIRE') || define("SESS_TIME_EXPIRE",0); // mata la session antes del tiempo predeterminado (24 mins), si es 0 no lo toma en cuenta
 defined('SESS_TIME_LIMIT') || define("SESS_TIME_LIMIT",40); // tiempo maximo de inactividad (mins), SESS_TIME_LIMIT > 0 siempre
+
+
 /***************************************************************************************************/
 /***************************************************************************************************/
 //SSOPORTE EMAIL

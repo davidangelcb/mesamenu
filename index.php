@@ -36,6 +36,9 @@ $paises = DdMesaMenu::fetchAll($query2);
         <link rel="stylesheet" href="<?php echo BASE_HOME;?>css/styles.css"/>
         <link rel="stylesheet" href="<?php echo BASE_HOME;?>css/icons.css"/>
         <link rel="icon" href="favicon.ico" type="image/x-icon" />        
+        <script>
+            var facebookId = '<?php echo FACEBOOK;?>';
+        </script>    
         <script src="<?php echo BASE_HOME;?>js/jquery-1.8.3.min.js"></script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
