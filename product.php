@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 
- 
-require_once 'index.php';
+print_r($_GET);
+require_once 'load_comentarios.php';
+echo 1;
 ?>

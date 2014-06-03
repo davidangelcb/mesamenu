@@ -120,7 +120,7 @@ function getSlides($data) {
                                                 <tr>
                                                     <td><a><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
                                                     <td><a><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
-                                                    <td><a class="iframe" href="'.HOME_DIR.'load_comentarios.php?idload='.$row['id'].'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
+                                                    <td><a class="iframe" href="'.HOME_DIR.'Lima/International/Ceviche/?idload='.$row['id'].'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
                                                     '.$tdBook.'
                                                 </tr>
                                             </table>                                                                                        
