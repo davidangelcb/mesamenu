@@ -22,7 +22,7 @@ $nombre="";
      
      $urlName = BASE_URL.$deparName.$tPlato.'/'.$nombre.'/';
      
-     $utlImg = HOME_DIR.'images/dishes/' . $plato['imagen'];
+     $utlImg = BASE_URL.'images/dishes/' . $plato['imagen'];
  }
 
 ?>
@@ -34,7 +34,7 @@ $nombre="";
         <meta name="description" content="Mesa Menú, el sitio más delicioso del Internet"/>           
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta property="fb:app_id" content="<?php echo FACEBOOK;?>">
-        <meta property="og:url" content="<?php echo BASE_HOME; ?>" />
+        <meta property="og:url" content="<?php echo $urlName; ?>" />
         <meta property="og:title" content="Mesa Menu" />
         <meta property="og:description" content="El sitio mas delicioso del Internet" />
         <meta property="og:image" content="<?php echo $utlImg; ?>" />
