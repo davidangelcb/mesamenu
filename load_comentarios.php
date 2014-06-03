@@ -20,9 +20,9 @@ $nombre="";
      $tPlato = '/'.trim($tipoPlato['name']);
      }
      
-     $urlName = BASE_URL.$deparName.$tPlato.'/'.$nombre.'/';
+     $urlName = urlencode(BASE_URL.$deparName.$tPlato.'/'.$nombre.'/');
      
-     $utlImg = BASE_URL.'images/dishes/' . $plato['imagen'];
+     $utlImg = BASE_URL.'/images/dishes/' . $plato['imagen'];
  }
 
 ?>
