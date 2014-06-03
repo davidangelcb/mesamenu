@@ -21,7 +21,7 @@ $nombre="";
      $tPlato = '/'.trim($tipoPlato['name']);
      }
      
-     $urlName = BASE_URL.$deparName.$tPlato.'/'.$nombre.'/';
+     $urlName = BASE_URL.$deparName.$tPlato.'/'.urlencode($nombre).'/';
  }
 
 ?>
@@ -50,9 +50,15 @@ $nombre="";
 
     </head>
     <body>
-        <section style="text-align: center; height: 90%">
-            <h1><?php echo $nombre;?></h1>
-            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="<?php echo $urlName;?>" num_posts="4" width="100%"></fb:comments>
-        </section>
+        <div id="fb-root"></div>
+        <script>
+          (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=<?php echo FACEBOOK;?>&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-comments" data-href="<?php echo $urlName;?>" data-numposts="5" data-colorscheme="light"></div>
     </body>
 </html>  
