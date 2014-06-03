@@ -19,8 +19,8 @@ $nombre="";
      if($tipoPlato){
      $tPlato = '/'.trim($tipoPlato['name']);
      }
-     
-     $urlName = urlencode(BASE_URL.$deparName.$tPlato.'/'.$nombre.'/');
+     $nombre = urlencode($nombre);
+     $urlName = BASE_URL.$deparName.$tPlato.'/'.$nombre.'/';
      
      $utlImg = BASE_URL.'/images/dishes/' . $plato['imagen'];
  }
