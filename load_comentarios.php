@@ -1,5 +1,7 @@
 <?php
 require 'lib/config.php';
+print_r($_GET);
+
 $salta=false;
 if(isset($_GET['carga'])){
    $salta=true;
