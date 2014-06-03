@@ -33,10 +33,10 @@ $nombre="";
         <meta name="description" content="Mesa Menú, el sitio más delicioso del Internet"/>           
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta property="fb:app_id" content="<?php echo FACEBOOK;?>">
-        <meta property="og:url" content="<?php echo BASE_HOME; ?>" />
+        <meta property="og:url" content="<?php echo $urlName; ?>" />
         <meta property="og:title" content="Mesa Menu" />
         <meta property="og:description" content="El sitio mas delicioso del Internet" />
-        <meta property="og:image" content="<?php echo BASE_HOME; ?>images/shared-mesamenu.png" />
+        <meta property="og:image" content="<?php echo $urlName; ?>images/shared-mesamenu.png" />
         <script>
             var facebookId = '<?php echo FACEBOOK;?>';
         </script> 
@@ -50,6 +50,7 @@ $nombre="";
 
     </head>
     <body>
+        <h1><?php echo $nombre;?></h1>
         <div id="fb-root"></div>
         <script>
           (function(d, s, id) {
@@ -59,6 +60,6 @@ $nombre="";
           js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=<?php echo FACEBOOK;?>&version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-comments" data-href="<?php echo $urlName;?>" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-comments" data-href="<?php echo $urlName;?>" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
     </body>
 </html>  
