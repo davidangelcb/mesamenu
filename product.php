@@ -5,8 +5,6 @@
  * and open the template in the editor.
  */
 
-
-
 if(is_numeric($_GET['op2'])) {
     $_GET['idload']=$_GET['op2'];
     require_once 'load_comentarios.php';
