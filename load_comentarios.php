@@ -1,8 +1,32 @@
 <?php
 require 'lib/config.php';
-if (!isset($_GET['idload'])) {
+$salta=false;
+if(isset($_GET['carga'])){
+   $salta=true;
+}
+if (!isset($_GET['idload']) && $salta==false) {
     exit;
 }
+
+if($salta){
+    $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, $_GET['op']);
+    if($plato){
+        $dep = $departamento['id'];
+        $tipoPlato = DdMesaMenu::fetchOneBy('name = ?', 'sections', null, $_GET['op1']);
+        if($tipoPlato){
+             $tip  = $tipoPlato['id'];
+             $xplato = DdMesaMenu::fetchOneBy('plato = ? and categoria = ? and departamento = ?', 'seccion_lima', null, array($_GET['op2'],$dep,$tip));
+             if($xplato){
+                 $_GET['idload'] = $xplato['id'];
+             }else{
+                 echo "No hay Plato";
+                 exit;
+             }
+        }
+    }
+}
+
+
 //http://test.perumenu.dev/Lima/Amazonica/ConchasconUmari/
 //
 $nombre="";
