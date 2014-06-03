@@ -5,7 +5,13 @@
  * and open the template in the editor.
  */
 
-print_r($_GET);
-require_once 'load_comentarios.php';
-echo 1;
+
+
+if(is_numeric($_GET['op2'])) {
+    $_GET['idload']=$_GET['op2'];
+    require_once 'load_comentarios.php';
+}else{
+    require_once 'index.php';
+}
+
 ?>

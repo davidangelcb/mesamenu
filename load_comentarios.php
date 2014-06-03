@@ -1,6 +1,5 @@
 <?php
 require 'lib/config.php';
-$_GET['idload']=1;
 if (!isset($_GET['idload'])) {
     exit;
 }
@@ -22,6 +21,8 @@ $nombre="";
      }
      
      $urlName = BASE_URL.$deparName.$tPlato.'/'.$nombre.'/';
+     
+     $utlImg = HOME_DIR.'images/dishes/' . $plato['imagen'];
  }
 
 ?>
@@ -36,7 +37,7 @@ $nombre="";
         <meta property="og:url" content="<?php echo BASE_HOME; ?>" />
         <meta property="og:title" content="Mesa Menu" />
         <meta property="og:description" content="El sitio mas delicioso del Internet" />
-        <meta property="og:image" content="<?php echo BASE_HOME; ?>images/shared-mesamenu.png" />
+        <meta property="og:image" content="<?php echo $utlImg; ?>" />
         <script>
             var facebookId = '<?php echo FACEBOOK;?>';
         </script> 

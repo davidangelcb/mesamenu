@@ -7,5 +7,6 @@ RewriteRule ^.*$ - [NC,L]
 
 
 
-RewriteRule ^([a-zA-Z]+)/(.*)/(.*) product.php?op=$1&op1=$2&op2=$3
+RewriteRule ^([a-zA-Z]+)/(.*)/(.*)/ product.php?carga=1&op=$1&op1=$2&op2=$3 [NC,L]
+RewriteRule ^([a-zA-Z]+)/(.*)/(.*)/comentario/ product.php?carga=2&op=$1&op1=$2&op2=$3 [NC,L]
  

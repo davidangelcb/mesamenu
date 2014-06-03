@@ -84,6 +84,20 @@ function getSlides($data) {
                     }
                 }
             }
+                    $nombre=trim($row['plato']);
+                    //http://test.perumenu.com/
+
+                    $departamento = DdMesaMenu::fetchOneBy('id = ?', 'locations', null, $row['departamento']);
+                    if($departamento){
+                        $deparName = trim($departamento['name']).'/';
+                    }
+                    $tipoPlato = DdMesaMenu::fetchOneBy('id = ?', 'sections', null, $row['categoria']);
+                    if($tipoPlato){
+                        $tPlato = trim($tipoPlato['name']).'/';
+                    }
+
+                    $urlName = HOME_DIR.$deparName.$tPlato.$nombre.'/';
+            
             if($salta){
             $imageshtml .= '<li>
                                 <div class="item_dishes">
@@ -120,7 +134,7 @@ function getSlides($data) {
                                                 <tr>
                                                     <td><a><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
                                                     <td><a><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
-                                                    <td><a class="iframe" href="'.HOME_DIR.'Lima/International/Ceviche/?idload='.$row['id'].'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
+                                                    <td><a class="iframe" href="'.$urlName.$row['id'].'/"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
                                                     '.$tdBook.'
                                                 </tr>
                                             </table>                                                                                        
