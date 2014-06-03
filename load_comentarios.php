@@ -50,16 +50,10 @@ $nombre="";
 
     </head>
     <body>
-        <h1><?php echo $nombre;?></h1>
-        <div id="fb-root"></div>
-        <script>
-          (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=<?php echo FACEBOOK;?>&version=v2.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-comments" data-href="<?php echo $urlName;?>" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
+        
+<iframe id="f1d28b039342e26" name="f2960819d1a8c56" scrolling="no" style="border: medium none; overflow: hidden; height: 2763px; width: 764px;" 
+        title="Facebook Social Plugin" class="fb_ltr" 
+        src="https://www.facebook.com/plugins/comments.php?api_key=<?php echo FACEBOOK;?>&amp;channel_url=<?php echo $urlName; ?>
+        http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FV80PAcvrynR.js%3Fversion%3D41%23cb%3Df2d4fb764ca45ca%26domain%3Dwww.animeid.tv%26origin%3Dhttp%253A%252F%252Fwww.animeid.tv%252Ff15d59dc1929bee%26relation%3Dparent.parent&amp;href=<?php echo $urlName; ?>&amp;locale=es_LA&amp;mobile=false&amp;numposts=7&amp;sdk=joey&amp;width=764"></iframe>
     </body>
 </html>  
