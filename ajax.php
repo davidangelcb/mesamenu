@@ -52,6 +52,7 @@ function getIdLogin($data) {
 function getSlides($data) {
    $imageshtml = '';
    $platos = array();
+   $cateAdd=' S.categoria = '.(int)$data['dishes'].' and ';
    if(isset($data['iduser'])){
        $user = DdMesaMenu::fetchOneBy('id = ?', 'users', null, $data['iduser']);
         if($user){
@@ -61,8 +62,11 @@ function getSlides($data) {
                 $platos[$rowF['idplato']]=$rowF['id'];
             }
         }
+        if($data['heard']=='SI'){
+            $cateAdd ='';
+        }
    } 
-    $query = "select  S.*, l.name from seccion_lima S  inner join locations l on l.id=S.departamento where S.categoria = ".(int)$data['dishes']." and l.name = '".$data['city']."'  and S.estatus='E' ORDER BY rand()";
+    $query = "select  S.*, l.name from seccion_lima S  inner join locations l on l.id=S.departamento where ".$cateAdd." l.name = '".$data['city']."'  and S.estatus='E' ORDER BY rand()";
     
     $result = DdMesaMenu::fetchAll($query);
     $imageshtml .= '<ul>';
@@ -96,7 +100,7 @@ function getSlides($data) {
                         $tPlato = trim($tipoPlato['name']).'/';
                     }
 
-                    $urlName = HOME_DIR.$deparName.$tPlato.$nombre.'/';
+                    $urlName = HOME_DIR.$deparName.$tPlato.$nombre.'/'.$row['id'];
             
             if($salta){
             $imageshtml .= '<li>
@@ -120,7 +124,7 @@ function getSlides($data) {
                                                     </td>
                                                     <td>
                                                         <div class="msjshared">
-                                                            <div class="container-nube" >Compartir</div>
+                                                            <div class="container-nube" >Comentarios</div>
                                                             <div class="arrow-after"></div>
                                                         </div>
                                                     </td>

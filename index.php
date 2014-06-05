@@ -53,9 +53,9 @@ $paises = DdMesaMenu::fetchAll($query2);
         var idUser = "";     
         function createLoginFace(foto, nombre){
             var html ="";
-            html = "<div style='position:relative; width:280px;height:50px;top:-10px'>";
-            html += '<div style="position:absolute;top:-10px:left:200px;margin-left:200px; ;height:50px; width:50px;"><img title="'+nombre+'" src="'+foto+'" style="border-radius:50%"/></div>';
-            html += '<div><img  style="margin-top:25px;margin-right:10px;" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
+            html = "<div style='position:relative;'>";
+            html += '<div style="position:absolute;height:40px; width:40px;right:0px;top:0px"><img title="'+nombre+'" src="'+foto+'" style="border-radius:50%;width:40px;"/></div>';
+            html += '<div style="position:absolute; right:0px; margin-right:40px;"><img  style="margin-top:25px;margin-right:10px;width:40%" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
             html += menu;
             html += '</div>';            
             return html;
@@ -367,6 +367,9 @@ $paises = DdMesaMenu::fetchAll($query2);
                                     $('#htmlselect-sections div a img').attr("src", "/images/sections/"+datax.selectedData.value+valor);
                                     LastSel=datax.selectedData.value;
                                     LastCiudad=ciudadText;
+
+                                    OnlyHeard='NO';
+                                    $("#vote").attr('src','/images/heart.png');
                                     $.ajax({
                                         url: "<?php echo HOME_DIR;?>ajax.php",
                                         type: 'post',

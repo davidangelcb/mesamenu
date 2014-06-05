@@ -1,23 +1,24 @@
 <?php
 require 'lib/config.php';
-print_r($_GET);
+$salta=true;
 
-$salta=false;
+
 if(isset($_GET['carga'])){
    $salta=true;
 }
 if (!isset($_GET['idload']) && $salta==false) {
     exit;
 }
-
+//Array ( [carga] => 1 [op] => Lima [op1] => Autor [op2] => MollejitaCrilladas ) 
 if($salta){
-    $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, $_GET['op']);
-    if($plato){
+    $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, trim($_GET['op']));
+    if($departamento){
         $dep = $departamento['id'];
+
         $tipoPlato = DdMesaMenu::fetchOneBy('name = ?', 'sections', null, $_GET['op1']);
         if($tipoPlato){
              $tip  = $tipoPlato['id'];
-             $xplato = DdMesaMenu::fetchOneBy('plato = ? and categoria = ? and departamento = ?', 'seccion_lima', null, array($_GET['op2'],$dep,$tip));
+             $xplato = DdMesaMenu::fetchOneBy('plato = ? and categoria = ? and departamento = ?', 'seccion_lima', null, array(trim($_GET['op2']),$tip,$dep));
              if($xplato){
                  $_GET['idload'] = $xplato['id'];
              }else{
