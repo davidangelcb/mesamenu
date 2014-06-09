@@ -25,7 +25,7 @@ defined('DB_TOOL_NAME') || define("DB_TOOL_NAME","mesamenu");
 
 if (APPLICATION_ENV == 'production' || defined('RUN_CRON')) {
     defined('PROTOCOL_TYPE') || define('PROTOCOL_TYPE', 'http://');
-    defined('HOME_DIRFILE') || define('HOME_DIRFILE','/var/www/html/test.mesamenu/'); // link de inicio
+    defined('HOME_DIRFILE') || define('HOME_DIRFILE','/var/www/html/mesamenu/'); // link de inicio
     defined('BASE_URL') || define('BASE_URL', 'http://mesamenu.com');   
     defined('HOME_DIR') || define('HOME_DIR','/'); // link de inicio
     defined('BASE_HOME') || define("BASE_HOME",BASE_URL.'/');

@@ -60,12 +60,12 @@ $paises = DdMesaMenu::fetchAll($query2);
             html += '</div>';            
             return html;
         }
-        
+        //<p><a class='iframe' href="http://wikipedia.com">Outside Webpage (Iframe)</a></p>
                 
         </script>
     </head>
     <body style="margin-bottom: 10px">
-        <?php require_once  'header.php'; ?>
+        <?php require_once  HOME_DIRFILE.'header.php'; ?>
 
         <section id="content">
 

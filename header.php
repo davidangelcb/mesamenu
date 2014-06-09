@@ -20,7 +20,7 @@
         <div id="navright">
             <div id="menuRedesSociales" style="display: none;">
             <ul>
-                <li>asdasd<img src="<?php echo HOME_DIR;?>images/loginwith_text.png" height="20" /></li>
+                <li><img src="<?php echo HOME_DIR;?>images/loginwith_text.png" height="20" /></li>
                 <li class="facebook hand">
                     <div id="msjfacebook" style="display: none;">
                         <div class="container" style="color:#3B5998;">Login con Facebook</div>
