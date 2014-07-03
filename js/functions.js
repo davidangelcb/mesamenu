@@ -14,6 +14,9 @@ fb.ready(function() {
         $('#menuRedesSociales').show();
     }
 });
+function goto(url){
+    document.location.href=url;
+}
 // Funcion para logarse con Facebook.
 function login() {
     fb.login(function() {

@@ -52,7 +52,7 @@ function getIdLogin($data) {
 function getSlides($data) {
    $imageshtml = '';
    $platos = array();
-   $cateAdd=' S.categoria = '.(int)$data['dishes'].' and ';
+   $cateAdd=' SP.idsection = '.(int)$data['dishes'].' and ';
    if(isset($data['iduser'])){
        $user = DdMesaMenu::fetchOneBy('id = ?', 'users', null, $data['iduser']);
         if($user){
@@ -66,8 +66,11 @@ function getSlides($data) {
             $cateAdd ='';
         }
    } 
-    $query = "select  S.*, l.name from seccion_lima S  inner join locations l on l.id=S.departamento where ".$cateAdd." l.name = '".$data['city']."'  and S.estatus='E' ORDER BY rand()";
-    
+ 
+   
+    $query = "select  S.*, l.name,SP.idsection from seccion_lima S  inner join locations l on l.id=S.departamento  inner join seccions_platos SP on SP.idplato = S.id where ".$cateAdd." l.name = '".$data['city']."'  and S.estatus='E' ORDER BY rand()";
+    $imageshtml.=  '';
+    $tPlato='';
     $result = DdMesaMenu::fetchAll($query);
     $imageshtml .= '<ul>';
     if ($result) {
@@ -95,14 +98,25 @@ function getSlides($data) {
                     if($departamento){
                         $deparName = trim($departamento['name']).'/';
                     }
-                    $tipoPlato = DdMesaMenu::fetchOneBy('id = ?', 'sections', null, $row['categoria']);
+                    $tipoPlato = DdMesaMenu::fetchOneBy('id = ?', 'sections', null, $row['idsection']);
                     if($tipoPlato){
                         $tPlato = trim($tipoPlato['name']).'/';
                     }
 
-                    $urlName = HOME_DIR.$deparName.$tPlato.$nombre.'/'.$row['id'];
+                    $urlName = $deparName.$tPlato.$nombre.'/';
             
             if($salta){
+                if($row['url']!=''){
+                    $urlMenu = ' href="'.$row['url'].'" target="_blank"';
+                }else{
+                    $urlMenu = '';
+                }
+                if($row['carta']!=''){
+                    $urlCarta = ' href="'.$row['carta'].'" target="_blank"';
+                }else{
+                    $urlCarta = '';
+                }
+                
             $imageshtml .= '<li>
                                 <div class="item_dishes">
                                     <figure>
@@ -136,9 +150,9 @@ function getSlides($data) {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
-                                                    <td><a><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
-                                                    <td><a class="iframe" href="'.$urlName.'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
+                                                    <td><a '.$urlMenu.'><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
+                                                    <td><a '.$urlCarta.'><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
+                                                    <td><a onclick="alert(09890)" class="iframe" href="load_comentarios.php" id="'.$urlName.'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
                                                     '.$tdBook.'
                                                 </tr>
                                             </table>                                                                                        

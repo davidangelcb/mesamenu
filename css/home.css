@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02/07/2014, 10:56:29 PM
+    Author     : David
+*/
+/******   BODY  ***********************/
+/****************************************/
+
+
+
+
+
+
+
+
+/******   HEADER  ***********************/
+/****************************************/
+header #grid ul{
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+}
+header #grid ul li{
+    margin: 0 auto;
+    padding: 0 5px;
+    display: inline-block;
+    list-style-type: none;
+    vertical-align: middle;
+}
+header #grid ul .location{
+    width: 4%;
+    text-align: right;
+}
+header #grid ul .vote{
+    text-align: center;
+    width: 2%;
+}
+header #grid ul .dashes{
+    width: 13%;
+}
+header #grid ul .pointer{
+    text-align: center;
+    width: 2%;    
+}
+header #grid ul .logo{
+    width: 40%;
+    text-align: center;
+}
+header #grid ul .logo img{
+    padding: 0.3em 0.5em 0.1em 0.5em;
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;    
+}
+header #grid ul .spacer{
+    width: 12%;
+}
+header #grid ul .facebook{
+    width: 6%;    
+}
+header #grid ul .twitter{
+    width: 6%;    
+}
+header #grid ul .google{
+    width: 6%; 
+}
+/******   FOOTER  ***********************/
+/****************************************/
+footer{
+    background-color: #000000;
+    height:auto! important;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width: 100%;
+    text-align: center;
+}
+footer a{
+    margin: 0;
+    padding: 0;
+}
+footer a img{
+    background-color: #000;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+footer ul{
+    background: url("/images/barra_inferior.png") no-repeat scroll 0 0 / 100% auto rgba(0, 0, 0, 0);
+    background-color: #6F6E72;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    list-style-type: none;
+}
+footer ul li{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color:white;
+    font-size: 12px;
+    display:inline-block;
+    cursor: pointer;
+}

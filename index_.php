@@ -145,20 +145,10 @@ $paises = DdMesaMenu::fetchAll($query2);
             
         /******************************************************/
             function setModalOpen(){
-                $(".iframe").colorbox({iframe:true, width:"60%", height:"70%",onClosed:verificaSession, onOpen:bueno}); 
-                
-            }
-            function bueno(){
-                
-                var a  = $(this).attr('href');
-                var id  = $(this).attr('id');
-
-                window.history.pushState(a, "Titulo", id);
-                return false;
+                $(".iframe").colorbox({iframe:true, width:"60%", height:"70%",onClosed:verificaSession}); 
             }
             function verificaSession(){
                 //alert(123);
-                window.history.pushState("Home", ".: Mesa Menu :.", "/index.php");
             }
             var LastSel=null;
             var LastCiudad=null;

@@ -1,24 +1,23 @@
 <?php
 require 'lib/config.php';
 $salta=true;
-
-
+//Array ( [op] => Lima [op1] => Andina [op2] => Canilla de Cordero ) 
 if(isset($_GET['carga'])){
    $salta=true;
 }
-if (!isset($_GET['idload']) && $salta==false) {
-    exit;
-}
+
 //Array ( [carga] => 1 [op] => Lima [op1] => Autor [op2] => MollejitaCrilladas ) 
 if($salta){
-    $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, trim($_GET['op']));
+    $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, trim($_GET['op']),false);
     if($departamento){
         $dep = $departamento['id'];
+        $q = "select * from sections where name like '%".trim($_GET['op1'])."%' ";
 
-        $tipoPlato = DdMesaMenu::fetchOneBy('name = ?', 'sections', null, $_GET['op1']);
+        $tipoPlato = DdMesaMenu::fetchOne($q);
         if($tipoPlato){
              $tip  = $tipoPlato['id'];
-             $xplato = DdMesaMenu::fetchOneBy('plato = ? and categoria = ? and departamento = ?', 'seccion_lima', null, array(trim($_GET['op2']),$tip,$dep));
+             $query = "select  S.id FROM seccion_lima S  inner join seccions_platos SP on SP.idplato = S.id where S.departamento = ? and SP.idsection = ? and S.plato = ?";
+             $xplato = DdMesaMenu::fetchOne($query,  array($dep,$tip,trim($_GET['op2'])),false);
              if($xplato){
                  $_GET['idload'] = $xplato['id'];
              }else{
@@ -33,7 +32,9 @@ if($salta){
 //http://test.perumenu.dev/Lima/Amazonica/ConchasconUmari/
 //
 $nombre="";
- $plato = DdMesaMenu::fetchOneBy('id = ?', 'seccion_lima', null, $_GET['idload']);
+ //$plato = DdMesaMenu::fetchOneBy('id = ?', 'seccion_lima', null, $_GET['idload']);
+ $query = "select  S.*, SP.idsection FROM seccion_lima S  inner join seccions_platos SP on SP.idplato = S.id where  S.id = ?";
+ $plato = DdMesaMenu::fetchOne($query,  array($_GET['idload']),false); 
  if($plato){
      $nombre=trim($plato['plato']);
      //http://test.perumenu.com/
@@ -42,9 +43,10 @@ $nombre="";
      if($plato){
          $deparName = '/'.trim($departamento['name']);
      }
-     $tipoPlato = DdMesaMenu::fetchOneBy('id = ?', 'sections', null, $plato['categoria']);
+     $tipoPlato = DdMesaMenu::fetchOneBy('id = ?', 'sections', null, $plato['idsection']);    
+     
      if($tipoPlato){
-     $tPlato = '/'.trim($tipoPlato['name']);
+        $tPlato = '/'.trim($tipoPlato['name']);
      }
      $nombre = urlencode($nombre);
      $urlName = BASE_URL.$deparName.$tPlato.'/'.$nombre.'/';
@@ -79,7 +81,7 @@ $nombre="";
     </head>
     <body>
         <section style="text-align: center; height: 95%">
-            <h1><?php echo $nombre;?></h1>
+            <h1><?php echo urldecode($nombre);?></h1>
             <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="<?php echo $urlName;?>" num_posts="4" width="100%"></fb:comments>
         </section>
     </body>

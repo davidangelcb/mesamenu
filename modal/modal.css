@@ -5,6 +5,7 @@
  	background-color:rgba(165,165,165, 0.3);
  	opacity:0.6;
  	filter:alpha(opacity=60);
+        display: none;
 }
 
 .bgmodal{

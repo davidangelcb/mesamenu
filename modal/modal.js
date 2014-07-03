@@ -32,6 +32,7 @@ $(document).ready(function(){
 		// estableciendo posicion
 		$('#bgmodal').css("left", mleft+'px');
 		$('#bgmodal').css("top", mtop+'px');
+                $('#bgtransparent').hide();
 	});
 	
 	/*$(window).keyup(function(event){
