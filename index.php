@@ -16,6 +16,7 @@ $categorias = DdMesaMenu::fetchAll($query);
 $query2="select * from countrys where estatus='S' order by 1 desc";
 $paises = DdMesaMenu::fetchAll($query2);
 $city = CIUDADDEFAULT_ID;
+$id=0;
 if(isset($_GET['op2'])){
     $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, trim($_GET['op']),false);
     if($departamento){
@@ -30,7 +31,7 @@ if(isset($_GET['op2'])){
              $query = "select  S.id FROM seccion_lima S  inner join seccions_platos SP on SP.idplato = S.id where S.departamento = ? and SP.idsection = ? and S.plato = ?";
              $xplato = DdMesaMenu::fetchOne($query,  array($dep,$tip,trim($_GET['op2'])),false);
              if($xplato){
-                 $_GET['idload'] = $xplato['id'];
+                 $id = $xplato['id'];
              }
         }
     }
@@ -187,7 +188,7 @@ if(isset($_GET['op2'])){
                 $.ajax({
                     url: "<?php echo HOME_DIR;?>ajax.php",
                     type: 'post',
-                    data: {cmd: 'getSlides',dishes: sel,city: ciudad,iduser:idUser,heard:OnlyHeard},
+                    data: {cmd: 'getSlides',idplato:<?php echo $id;?>, dishes: sel,city: ciudad,iduser:idUser,heard:OnlyHeard},
                     beforeSend: function(){
                         $("#content_images").html('Loading ...');
                     },
@@ -401,7 +402,7 @@ if(isset($_GET['op2'])){
                                     $.ajax({
                                         url: "<?php echo HOME_DIR;?>ajax.php",
                                         type: 'post',
-                                        data: {cmd: 'getSlides',dishes: datax.selectedData.value,city:ciudadText,iduser:idUser,heard:OnlyHeard},
+                                        data: {cmd: 'getSlides',idplato:<?php echo $id;?>,dishes: datax.selectedData.value,city:ciudadText,iduser:idUser,heard:OnlyHeard},
                                         beforeSend: function(){
                                             $("#content_images").html('Loading ...');
                                         },

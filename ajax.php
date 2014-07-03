@@ -66,9 +66,18 @@ function getSlides($data) {
             $cateAdd ='';
         }
    } 
- 
-   
-    $query = "select  S.*, l.name,SP.idsection from seccion_lima S  inner join locations l on l.id=S.departamento  inner join seccions_platos SP on SP.idplato = S.id where ".$cateAdd." l.name = '".$data['city']."'  and S.estatus='E' ORDER BY rand()";
+   $query="";
+   $randon = " rand() ";
+   $addx="";
+   if(isset($data['idplato'])){
+       if($data['idplato']>0){
+            $randon = " letra ";
+            $query.= "select 'A' as letra, S.*, l.name,SP.idsection from seccion_lima S  inner join locations l on l.id=S.departamento  inner join seccions_platos SP on SP.idplato = S.id where  S.id= '".$data['idplato']."' UNION ";
+            $addx = " S.id not  in ( '".$data['idplato']."')  ";
+       }
+   }
+
+    $query.= "select 'B' as letra, S.*, l.name,SP.idsection from seccion_lima S  inner join locations l on l.id=S.departamento  inner join seccions_platos SP on SP.idplato = S.id where ".$cateAdd." l.name = '".$data['city']."'  and S.estatus='E' ".$addx." ORDER BY ";
     $imageshtml.=  '';
     $tPlato='';
     $result = DdMesaMenu::fetchAll($query);
