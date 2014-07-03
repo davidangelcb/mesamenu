@@ -4,11 +4,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-  print_r($_SERVER);
-  exit();
-if(isset($_SERVER['http_reference'])){
-    //require_once 'index.php';    
-    print_r($_SERVER);
+  $data = explode("facebook",$_SERVER['HTTP_REFERER']);
+if($data>1){
+    require_once 'index.php';        
 }else{
     require_once 'load_comentarios.php';
 }
