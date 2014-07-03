@@ -80,8 +80,8 @@ $nombre="";
 
     </head>
     <body>
-        <section style="text-align: left; height: 95%">
-            <h3><?php echo urldecode($nombre);?></h3>
+        <section style="text-align: center; height: 95%">
+            <h1><?php echo urldecode($nombre);?></h1>
             <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="<?php echo $urlName;?>" num_posts="4" width="100%"></fb:comments>
         </section>
     </body>
