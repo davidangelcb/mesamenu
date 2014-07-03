@@ -29,6 +29,7 @@ if(isset($_GET['op2'])){
              $tip  = $tipoPlato['id'];
              $randomize = $tipoPlato['id'];
              $query = "select  S.id FROM seccion_lima S  inner join seccions_platos SP on SP.idplato = S.id where S.departamento = ? and SP.idsection = ? and S.plato = ?";
+             echo $query;
              $xplato = DdMesaMenu::fetchOne($query,  array($dep,$tip,trim($_GET['op2'])),false);
              if($xplato){
                  $id = $xplato['id'];
