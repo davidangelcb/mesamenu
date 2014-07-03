@@ -152,7 +152,7 @@ $paises = DdMesaMenu::fetchAll($query2);
                 
                 var a  = $(this).attr('href');
                 var id  = $(this).attr('id');
-
+                window.history.pushState(a, ".: Mesa Menu :.", "/index.php");
                 window.history.pushState(a, "Titulo", id);
                 return false;
             }
@@ -460,10 +460,10 @@ $paises = DdMesaMenu::fetchAll($query2);
                 }
                 
                 function closeModal(){
-                    alert('aaa');
+                     
                     $('#bgmodal').hide()
                     $('#bgtransparent').hide();
-                    alert('bbbb');
+                    
                 }
             });
             var facebookShare = function(url){
