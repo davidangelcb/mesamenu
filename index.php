@@ -15,8 +15,26 @@ $categorias = DdMesaMenu::fetchAll($query);
 /* Pasies de menudencia */
 $query2="select * from countrys where estatus='S' order by 1 desc";
 $paises = DdMesaMenu::fetchAll($query2);
+$city = CIUDADDEFAULT_ID;
+if(isset($_GET['op2'])){
+    $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, trim($_GET['op']),false);
+    if($departamento){
+        $dep = $departamento['id'];
+        $city =$dep;
+        $q = "select * from sections where name like '%".trim($_GET['op1'])."%' ";
 
-
+        $tipoPlato = DdMesaMenu::fetchOne($q);
+        if($tipoPlato){
+             $tip  = $tipoPlato['id'];
+             $randomize = $tipoPlato['id'];
+             $query = "select  S.id FROM seccion_lima S  inner join seccions_platos SP on SP.idplato = S.id where S.departamento = ? and SP.idsection = ? and S.plato = ?";
+             $xplato = DdMesaMenu::fetchOne($query,  array($dep,$tip,trim($_GET['op2'])),false);
+             if($xplato){
+                 $_GET['idload'] = $xplato['id'];
+             }
+        }
+    }
+}
 
 ?>
 <!DOCTYPE HTML>
@@ -518,7 +536,7 @@ $paises = DdMesaMenu::fetchAll($query2);
                     });
                }
             };
-            getSlides(<?php echo $randomize; ?>,'<?php echo CIUDADDEFAULT_ID; ?>');
+            getSlides(<?php echo $randomize; ?>,'<?php echo $city; ?>');
         </script>
         <script type="text/javascript" src="<?php echo BASE_HOME;?>js/functions.js"></script>
         <?php
