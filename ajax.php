@@ -78,7 +78,7 @@ function getSlides($data) {
    }
 
     $query.= "select 'B' as letra, S.*, l.name,SP.idsection from seccion_lima S  inner join locations l on l.id=S.departamento  inner join seccions_platos SP on SP.idplato = S.id where ".$cateAdd." l.name = '".$data['city']."'  and S.estatus='E' ".$addx." ORDER BY ".$randon;
-    $imageshtml.=  '';
+    $imageshtml.=  $query.'';
     $tPlato='';
     $result = DdMesaMenu::fetchAll($query);
     $imageshtml .= '<ul>';
