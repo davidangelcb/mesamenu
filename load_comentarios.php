@@ -80,17 +80,9 @@ $nombre="";
 
     </head>
     <body>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=<?php echo FACEBOOK;?>&version=v2.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <section style="text-align: center; height: 95%">
+        <section style="text-align: left; height: 95%">
             <h3><?php echo urldecode($nombre);?></h3>
-            <div class="fb-comments" data-href="<?php echo $urlName;?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="<?php echo $urlName;?>" num_posts="4" width="100%"></fb:comments>
         </section>
     </body>
 </html>  
