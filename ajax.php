@@ -161,7 +161,7 @@ function getSlides($data) {
                                                 <tr>
                                                     <td><a '.$urlMenu.'><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
                                                     <td><a '.$urlCarta.'><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
-                                                    <td><a onclick="alert(09890)" class="iframe" href="load_comentarios.php" id="'.$urlName.'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
+                                                    <td><a  class="iframe" href="load_comentarios.php" id="'.$urlName.'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
                                                     '.$tdBook.'
                                                 </tr>
                                             </table>                                                                                        
