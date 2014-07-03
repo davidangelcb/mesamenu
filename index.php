@@ -16,7 +16,7 @@ $categorias = DdMesaMenu::fetchAll($query);
 $query2="select * from countrys where estatus='S' order by 1 desc";
 $paises = DdMesaMenu::fetchAll($query2);
 $city = CIUDADDEFAULT_ID;
-$id=0;
+$idplatico=0;
 if(isset($_GET['op2'])){
     $departamento = DdMesaMenu::fetchOneBy('name = ?', 'locations', null, trim($_GET['op']),false);
     if($departamento){
@@ -32,7 +32,7 @@ if(isset($_GET['op2'])){
              echo $query;
              $xplato = DdMesaMenu::fetchOne($query);
              if($xplato){
-                 $id = $xplato['id'];
+                 $idplatico = $xplato['id'];
              }
         }
     }
@@ -189,7 +189,7 @@ if(isset($_GET['op2'])){
                 $.ajax({
                     url: "<?php echo HOME_DIR;?>ajax.php",
                     type: 'post',
-                    data: {cmd: 'getSlides',idplato:<?php echo $id;?>, dishes: sel,city: ciudad,iduser:idUser,heard:OnlyHeard},
+                    data: {cmd: 'getSlides',idplato:<?php echo $idplatico;?>, dishes: sel,city: ciudad,iduser:idUser,heard:OnlyHeard},
                     beforeSend: function(){
                         $("#content_images").html('Loading ...');
                     },
@@ -403,7 +403,7 @@ if(isset($_GET['op2'])){
                                     $.ajax({
                                         url: "<?php echo HOME_DIR;?>ajax.php",
                                         type: 'post',
-                                        data: {cmd: 'getSlides',idplato:<?php echo $id;?>,dishes: datax.selectedData.value,city:ciudadText,iduser:idUser,heard:OnlyHeard},
+                                        data: {cmd: 'getSlides',idplato:<?php echo $idplatico;?>,dishes: datax.selectedData.value,city:ciudadText,iduser:idUser,heard:OnlyHeard},
                                         beforeSend: function(){
                                             $("#content_images").html('Loading ...');
                                         },
