@@ -6,9 +6,7 @@
  */
   $data = explode("facebook",$_SERVER['HTTP_REFERER']);
 if(count($data)>1){
-    echo "<pre>";
-    print_r($_GET);
-    echo "</pre>";
+    
     require_once 'index.php';        
 }else{
     require_once 'load_comentarios.php';
