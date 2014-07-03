@@ -539,6 +539,9 @@ if(isset($_GET['op2'])){
                }
             };
             getSlides(<?php echo $randomize; ?>,'<?php echo $city; ?>');
+            <?php if($idplatico>0){?>
+             window.history.pushState("Home", ".: Mesa Menu :.", "/index.php");
+            <?php }?>
         </script>
         <script type="text/javascript" src="<?php echo BASE_HOME;?>js/functions.js"></script>
         <?php
