@@ -3,6 +3,7 @@ var menu = '<div id="Div_menu" onmouseover="menux(3,0);" onmouseout="menux(2,0);
     menu+=  'Log-out</li></ul>';
     menu+=  '</div>';
 fb.ready(function() {
+    console.log("aca-"+fb.logged);
     if (fb.logged)
     {
         // Cambiamos el link de identificarse por el nombre y la foto del usuario.
