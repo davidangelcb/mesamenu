@@ -8,7 +8,7 @@
                 <li>
                     <?php require_once HOME_DIRFILE.'categoria.php'; ?>
                 </li>
-                <li><img id="vote" style="display: none" src="<?php echo HOME_DIR;?>images/heart.png"/></li>
+                <li><img id="vote" style="display: block" src="<?php echo HOME_DIR;?>images/heart.png"/></li>
             </ul>
         </div>
         <div id="navmiddle">
@@ -27,8 +27,7 @@
                         <div class="arrow-after"></div>
                     </div>
                     <img id="sharedFacebook" src="<?php echo HOME_DIR;?>images/boton_facebook.png"  onmouseover="this.src='<?php echo HOME_DIR;?>images/boton_facebook_over.png'" onmouseout="this.src='<?php echo HOME_DIR;?>images/facebook_icon.png'"  height="20"/>
-                </li>
-                
+                </li>                
             </ul>
             </div>    
         </div>

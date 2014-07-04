@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 file_put_contents('facebook.log', print_r($_SERVER,true));
-  $data = explode("facebook",$_SERVER['HTTP_REFERER']);
+$data = explode("facebook",$_SERVER['HTTP_REFERER']);
 if(count($data)>1){
     
     require_once 'index.php';        

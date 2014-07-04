@@ -87,9 +87,9 @@ function getSlides($data) {
             $salta=true;
             if(isset($data['iduser'])){
                 if(!isset($platos[$row['id']])){
-                    $tdBook= '<td id="cnt_favorite'.$row['id'].'"><span><img class="imgSRC" status ="N" onclick="BookMark(this,'.$row['id'].')" id="favorite'.$row['id'].'"   src="'.HOME_DIR.'images/earth.png"  srcA="'.HOME_DIR.'images/earth.png" data-alt-srcA="'.HOME_DIR.'images/earth_over.png" height="50" width="50"/></span></td>';
+                    $tdBook= '<td id="cnt_favorite'.$row['id'].'"><span><img title="Amo" class="imgSRC" status ="N" onclick="BookMark(this,'.$row['id'].')" id="favorite'.$row['id'].'"   src="'.HOME_DIR.'images/earth.png"  srcA="'.HOME_DIR.'images/earth.png" data-alt-srcA="'.HOME_DIR.'images/earth_over.png" height="50" width="50"/></span></td>';
                 }else{
-                    $tdBook= '<td id="cnt_favorite'.$row['id'].'"><span><img class="imgSRC" status ="Y" onclick="BookMark(this,'.$row['id'].')" id="favorite'.$row['id'].'"   src="'.HOME_DIR.'images/earth_over.png"  srcA="'.HOME_DIR.'images/earth.png" data-alt-srcA="'.HOME_DIR.'images/earth_over.png" height="50" width="50"/></span></td>';
+                    $tdBook= '<td id="cnt_favorite'.$row['id'].'"><span><img title="Amo" class="imgSRC" status ="Y" onclick="BookMark(this,'.$row['id'].')" id="favorite'.$row['id'].'"   src="'.HOME_DIR.'images/earth_over.png"  srcA="'.HOME_DIR.'images/earth.png" data-alt-srcA="'.HOME_DIR.'images/earth_over.png" height="50" width="50"/></span></td>';
                 }
             }
             if(isset($data['iduser'])){
@@ -131,37 +131,11 @@ function getSlides($data) {
                                     <figure>
                                         <img src="'.HOME_DIR.'images/dishes/' . $row['imagen'] . '" alt=""/>                                                                                        
                                         <ol style="position: absolute; top:70%;float:left;">
-                                            <table border="0">
+                                            <table border="0">                                                
                                                 <tr>
-                                                    <td>
-                                                        <div class="msjtable">
-                                                            <div class="container-nube">Mesa</div>
-                                                            <div class="arrow-after"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="msjcart">
-                                                            <div class="container-nube">Carta</div>
-                                                            <div class="arrow-after"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="msjshared">
-                                                            <div class="container-nube" >Comentarios</div>
-                                                            <div class="arrow-after"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="msjfavorite">
-                                                            <div class="container-nube">Favorito</div>
-                                                            <div class="arrow-after"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><a '.$urlMenu.'><img id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
-                                                    <td><a '.$urlCarta.'><img id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
-                                                    <td><a  class="iframe" href="load_comentarios.php" id="'.$urlName.'"><img id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
+                                                    <td><a '.$urlMenu.'><img title="Mesa"  id="table" src="'.HOME_DIR.'images/table.png" height="50" width="50"/></a></td>
+                                                    <td><a '.$urlCarta.'><img title="carta" id="cart" src="'.HOME_DIR.'images/cart.png" height="50" width="50"/></a></td>
+                                                    <td><a  class="iframe" href="load_comentarios.php" id="'.$urlName.'"><img  title="Comentarios" id="shared" src="'.HOME_DIR.'images/social.png"   height="50" width="50"/></a></td>
                                                     '.$tdBook.'
                                                 </tr>
                                             </table>                                                                                        

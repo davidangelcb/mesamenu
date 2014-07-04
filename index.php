@@ -68,14 +68,15 @@ if(isset($_GET['op2'])){
 
         <script src="<?php echo BASE_HOME;?>js/jquery.colorbox.js"></script>        
         <script type="text/javascript" src="<?php echo BASE_HOME;?>js/facebook.js"></script> 
-        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+         <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>        
         <script>
         var idUser = "";     
         function createLoginFace(foto, nombre){
             var html ="";
             html = "<div style='position:relative;'>";
-            html += '<div style="position:absolute;height:40px; width:40px;right:0px;top:0px"><img title="'+nombre+'" src="'+foto+'" style="border-radius:50%;width:40px;"/></div>';
-            html += '<div style="position:absolute; right:0px; margin-right:40px;"><img  style="margin-top:25px;margin-right:10px;width:40%" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
+            html += '<div onmouseover="menux(1,0);" onmouseout="menux(2,0);" style="position:absolute;height:40px; width:40px;right:0px;top:-5px"><img    src="'+foto+'" style="border-radius:50%;width:40px;"/></div>';
+            html += '<div style="position:absolute; right:0px; margin-right:-18px;"><img  style="margin-top:25px;margin-right:10px;width:40%" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
             html += menu;
             html += '</div>';            
             return html;
@@ -83,6 +84,52 @@ if(isset($_GET['op2'])){
         //<p><a class='iframe' href="http://wikipedia.com">Outside Webpage (Iframe)</a></p>
                 
         </script>
+<style>
+  .ui-tooltip, .arrow:after {
+    background: black;
+    border: 2px solid white;
+  }
+  .ui-tooltip {
+    padding: 3px 6px;
+    color: white;
+    border-radius: 2px;
+    font: bold 10px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+  }
+  .arrow {
+    width: 70px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+  }
+  .arrow.top {
+    top: -16px;
+    bottom: auto;
+  }
+  .arrow.left {
+    left: 20%;
+  }
+  .arrow:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 6px 5px 9px -9px black;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .arrow.top:after {
+    bottom: -20px;
+    top: auto;
+  }
+  </style>        
     </head>
     <body style="margin-bottom: 10px">
         <?php require_once  HOME_DIRFILE.'header.php'; ?>
@@ -166,6 +213,21 @@ if(isset($_GET['op2'])){
         /******************************************************/
             function setModalOpen(){
                 $(".iframe").colorbox({iframe:true, width:"60%", height:"70%",onClosed:verificaSession, onOpen:bueno}); 
+                //$( document ).tooltip({ position: { my: "right center", at: "center top-20" } });
+                $( document ).tooltip({
+                    position: {
+                      my: "center bottom-20",
+                      at: "center top",
+                      using: function( position, feedback ) {
+                        $( this ).css( position );
+                        $( "<div>" )
+                          .addClass( "arrow" )
+                          .addClass( feedback.vertical )
+                          .addClass( feedback.horizontal )
+                          .appendTo( this );
+                      }
+                    }
+                  });
                 
             }
             function bueno(){
@@ -199,7 +261,7 @@ if(isset($_GET['op2'])){
                             //$("#seleccionado").attr('src',xx[2]);
                             $("#content_images").html(xx[1]);
                             var ask =  setTimeout("setModalOpen()",1000);
-                             
+                              
                             /*$("#htmlselect-sections").ap*/                            
                             //$("#categoria").attr('value',xx[3]);
                         } else{

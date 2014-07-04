@@ -56,7 +56,7 @@ $nombre="";
 
 ?>
 <!DOCTYPE HTML>
-<html xmlns:fb="http://ogp.me/ns/fb#">
+<html lang="es">
     <head>
         <meta  charset="UTF-8" />
         <title> Mesa Menu </title>
@@ -74,20 +74,15 @@ $nombre="";
         <link rel="stylesheet" href="<?php echo BASE_HOME; ?>css/styles.css"/>
         <link rel="stylesheet" href="<?php echo BASE_HOME; ?>css/icons.css"/>
         <link rel="icon" href="favicon.ico" type="image/x-icon" />        
+        <script src="<?php echo BASE_HOME; ?>js/jquery-1.8.3.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo BASE_HOME; ?>js/facebook.js"></script> 
+
     </head>
     <body>
-        <section style="text-align: center; height: 95%">
-            <h1><?php echo urldecode($nombre);?></h1>
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=<?php echo FACEBOOK;?>&version=v2.0";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-            <fb:comments  href="<?php echo $urlName;?>" num_posts="4" width="100%"></fb:comments>
+        <section style="text-align: left; height: 95%">
+            <h3 style="color: #808080"><?php echo urldecode($nombre);?></h3>
+            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="<?php echo $urlName;?>" num_posts="4" width="100%"></fb:comments>
         </section>
     </body>
 </html>  

@@ -235,9 +235,15 @@ $paises = DdMesaMenu::fetchAll($query2);
                     if(OnlyHeard=='SI'){
                         OnlyHeard='NO';
                         $(this).attr('src','/images/heart.png');
+                        $( this ).css({
+                            "width": "25px"
+                        });
                     }else{
                         OnlyHeard='SI';
                         $(this).attr('src','/images/heart_over.png');                        
+                        $( this ).css({
+                            "width": "25px"
+                        });
                     }
                     getSlides(LastSel,LastCiudad);
                 });
