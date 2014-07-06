@@ -81,6 +81,13 @@ if(isset($_GET['op2'])){
             html += '</div>';            
             return html;
         }
+        function GrissMenu(estatus){
+                if(estatus=='A'){
+                    $("#htmlselect-sections").removeClass("grises1").addClass("grises");
+                }else{
+                    $("#htmlselect-sections").removeClass("grises").addClass("grises1");
+                }
+        }
         //<p><a class='iframe' href="http://wikipedia.com">Outside Webpage (Iframe)</a></p>
                 
         </script>
@@ -132,6 +139,7 @@ if(isset($_GET['op2'])){
   </style>        
     </head>
     <body style="margin-bottom: 10px">
+    <div style="height: 0; width: 0;"><svg baseProfile="full" version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"></feColorMatrix></filter></svg></div>                
         <?php require_once  HOME_DIRFILE.'header.php'; ?>
 
         <section id="content">
@@ -152,7 +160,7 @@ if(isset($_GET['op2'])){
         </section>
         
             <?php require_once HOME_DIRFILE.'footer.php'; ?>
-        
+
         <script>            
         function getIdLogin(idLogin){
             if(idLogin){
@@ -327,9 +335,11 @@ if(isset($_GET['op2'])){
                     if(OnlyHeard=='SI'){
                         OnlyHeard='NO';
                         $(this).attr('src','/images/heart.png');
+                        GrissMenu("D");
                     }else{
                         OnlyHeard='SI';
-                        $(this).attr('src','/images/heart_over.png');                        
+                        $(this).attr('src','/images/heart_over.png');  
+                        GrissMenu("A");
                     }
                     getSlides(LastSel,LastCiudad);
                 });
@@ -461,6 +471,7 @@ if(isset($_GET['op2'])){
                                     LastCiudad=ciudadText;
 
                                     OnlyHeard='NO';
+                                    GrissMenu("D");
                                     $("#vote").attr('src','/images/heart.png');
                                     $.ajax({
                                         url: "<?php echo HOME_DIR;?>ajax.php",
