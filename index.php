@@ -74,9 +74,9 @@ if(isset($_GET['op2'])){
         var idUser = "";     
         function createLoginFace(foto, nombre){
             var html ="";
-            html = "<div style='position:relative;'>";
-            html += '<div onmouseover="menux(1,0);" onmouseout="menux(2,0);" style="position:absolute;height:40px; width:40px;right:0px;top:-5px"><img    src="'+foto+'" style="border-radius:50%;width:40px;"/></div>';
-            html += '<div style="position:absolute; right:0px; margin-right:-18px;"><img  style="margin-top:25px;margin-right:10px;width:40%" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
+            html = "<div class='boxLogin'>";
+            html += '<div onmouseover="menux(1,0);" onmouseout="menux(2,0);" class="boxFace"><img    src="'+foto+'" class="imgFace"/></div>';
+            html += '<div class="boxRow"><img  class="imgCircle" src="<?php echo HOME_DIR;?>images/flecha_slide.png" onmouseover="menux(1,0);"   onmouseout="menux(2,0);"/></div>';
             html += menu;
             html += '</div>';            
             return html;
@@ -136,14 +136,24 @@ if(isset($_GET['op2'])){
     bottom: -20px;
     top: auto;
   }
-  </style>        
+  </style>   
+  <script>
+  
+  
+</script>
     </head>
-    <body style="margin-bottom: 10px">
-    <div style="height: 0; width: 0;"><svg baseProfile="full" version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"></feColorMatrix></filter></svg></div>                
+    <body style="margin-bottom: 10px; ">
+        <div style="position:  relative;">
+            
         <?php require_once  HOME_DIRFILE.'header.php'; ?>
 
         <section id="content">
-
+            <div id="flotante" style="background: url(images/background_mesamenu.png);display: none; position: absolute; right: 0px;; top:0px; height: 565px;position: absolute; width: 250px;z-index:54654651111">
+                <div id="paises">
+                    <div><img src="images/peru_boton_over.png"></div>
+                    <div><img src="images/Colombia_boton_over.png"></div>
+                </div>
+            </div>
             <article id="content_images" style="display:block;">                
             </article>
             <input type="hidden" id="categoria"/>
@@ -161,7 +171,12 @@ if(isset($_GET['op2'])){
         
             <?php require_once HOME_DIRFILE.'footer.php'; ?>
 
-        <script>            
+        
+        <?php
+        require_once HOME_DIR.'analytics.php';
+        ?>
+            </div>    
+            <script>            
         function getIdLogin(idLogin){
             if(idLogin){
                 $.ajax({
@@ -281,6 +296,7 @@ if(isset($_GET['op2'])){
             }
             $( document ).ready(function() {
                 /**********************POPUP****************************/
+               
                 var ancho = 400; 
                 var alto = 350;
 
@@ -611,14 +627,15 @@ if(isset($_GET['op2'])){
                     });
                }
             };
+            
             getSlides(<?php echo $randomize; ?>,'<?php echo $city; ?>');
+            
+            
+    
             <?php if($idplatico>0){?>
              window.history.pushState("Home", ".: Mesa Menu :.", "/index.php");
             <?php }?>
         </script>
         <script type="text/javascript" src="<?php echo BASE_HOME;?>js/functions.js"></script>
-        <?php
-        require_once HOME_DIR.'analytics.php';
-        ?>
     </body>      
 </html>

@@ -2,13 +2,13 @@
     <div id="grid">                
         <div id="navleft">
             <ul>
-                <li>
+                <li id="location_">
                     <?php require_once HOME_DIRFILE.'locations.php'; ?>
                 </li>                        
-                <li>
+                <li id="categoria_">
                     <?php require_once HOME_DIRFILE.'categoria.php'; ?>
                 </li>
-                <li><img id="vote" style="display: block" src="<?php echo HOME_DIR;?>images/heart.png"/></li>
+                <li id="vote_"><img id="vote" style="display: block" src="<?php echo HOME_DIR;?>images/heart.png"/></li>
             </ul>
         </div>
         <div id="navmiddle">
@@ -20,7 +20,7 @@
         <div id="navright">
             <div id="menuRedesSociales" style="display: none;">
             <ul>
-                <li><img src="<?php echo HOME_DIR;?>images/loginwith_text.png" height="20" /></li>
+                <li><img class="loginwith" src="<?php echo HOME_DIR;?>images/loginwith_text.png" height="20" /></li>
                 <li class="facebook hand">
                     <div id="msjfacebook" style="display: none;">
                         <div class="container" style="color:#3B5998;">Login con Facebook</div>
@@ -30,6 +30,9 @@
                 </li>                
             </ul>
             </div>    
+        </div>
+        <div id="iconoMovilLayout">
+            <img src="images/icon_list.png" onclick="openBoxLoginTo()" style="cursor:pointer">
         </div>
     </div>
 </header>

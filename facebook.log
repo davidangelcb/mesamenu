@@ -15,11 +15,13 @@ Array
     [TMP] => \xampp\tmp
     [HTTP_HOST] => test.perumenu.dev
     [HTTP_CONNECTION] => keep-alive
-    [HTTP_ACCEPT] => */*
-    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [HTTP_ACCEPT] => image/webp,*/*;q=0.8
+    [HTTP_USER_AGENT] => Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53
+    [HTTP_REFERER] => http://test.perumenu.dev/index.php
     [HTTP_ACCEPT_ENCODING] => gzip,deflate,sdch
     [HTTP_ACCEPT_LANGUAGE] => es-ES,es;q=0.8
-    [HTTP_COOKIE] => __utma=104130565.270061706.1402293878.1404362081.1404444779.3; __utmb=104130565.88.10.1404444779; __utmc=104130565; __utmz=104130565.1402293878.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); fbsr_648941031851880=Q_u5RHMnTvD-qDevX8l1RrVuNl8DA39JYMEJIiw-4kQ.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUURrc0Y0ZGtQbEpqa3RqYmZGc0dsWE5OR2lzbUc5OE1nRndZR1publRORHdrNUN0MmpldU5QZEw2d2hLNGNJa1dOd0V4YTVuc1lTdVM5MWttck0ya3hLOHhfWUVZR0VKRGFWS2xoNzZtdEFFbWFnSXZQSXlWdDZrRzNoLXNtcF9reWhYSzlUV01Cc0JaUUNUcWlXTVA5UGd2R2g1SjY0OE5QYTNyX1hxRVhjeWsxMzdfTVpxME9laTNPbHZPb3NZS2NzVE55YzhDeHkzWHRrOGkxaWpvSndtcGwyYlFaaUV2dDVaMDhlcnlYVVcyRXdjamxGLTJFTnJjZUJZV1prOS1tOHB4NVRtUlYxYkpqaHBtUU9CRHVJWVhUM0pfZHl3R0hjWHRBek9JcmVJYjR4LVBGZ2duRlBJMEdkQnh3RW5aTSIsImlzc3VlZF9hdCI6MTQwNDQ0OTY0MywidXNlcl9pZCI6IjEwMjA0MDQ4MTYzMTE0MTQ5In0
+    [HTTP_COOKIE] => __utma=104130565.270061706.1402293878.1404955820.1404966134.5; __utmb=104130565.111.10.1404966134; __utmc=104130565; __utmz=104130565.1402293878.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
     [PATH] => C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\ProgramData\Lenovo\ReadyApps;C:\Program Files\OpenVPN\bin
     [SystemRoot] => C:\WINDOWS
     [COMSPEC] => C:\WINDOWS\system32\cmd.exe
@@ -35,15 +37,15 @@ Array
     [DOCUMENT_ROOT] => C:/xampp/htdocs/mesamenu
     [SERVER_ADMIN] => postmaster@localhost
     [SCRIPT_FILENAME] => C:/xampp/htdocs/mesamenu/product.php
-    [REMOTE_PORT] => 61206
-    [REDIRECT_QUERY_STRING] => carga=1&op=Lima&op1=Amazonica&op2=Lomito de cerdo y panceta ahumada con boronia
-    [REDIRECT_URL] => /Lima/Amazonica/Lomito de cerdo y panceta ahumada con boronia/favicon.ico
+    [REMOTE_PORT] => 63907
+    [REDIRECT_QUERY_STRING] => carga=1&op=images&op1=dishes&op2=Carnal-ColadeLangostadelCaribe1
+    [REDIRECT_URL] => /images/dishes/Carnal-ColadeLangostadelCaribe1/2Kilo
     [GATEWAY_INTERFACE] => CGI/1.1
     [SERVER_PROTOCOL] => HTTP/1.1
     [REQUEST_METHOD] => GET
-    [QUERY_STRING] => carga=1&op=Lima&op1=Amazonica&op2=Lomito de cerdo y panceta ahumada con boronia
-    [REQUEST_URI] => /Lima/Amazonica/Lomito%20de%20cerdo%20y%20panceta%20ahumada%20con%20boronia/favicon.ico
+    [QUERY_STRING] => carga=1&op=images&op1=dishes&op2=Carnal-ColadeLangostadelCaribe1
+    [REQUEST_URI] => /images/dishes/Carnal-ColadeLangostadelCaribe1/2Kilo
     [SCRIPT_NAME] => /product.php
     [PHP_SELF] => /product.php
-    [REQUEST_TIME] => 1404449644
+    [REQUEST_TIME] => 1404971821
 )
