@@ -173,7 +173,7 @@ if(isset($_GET['op2'])){
 
         
         <?php
-        require_once HOME_DIR.'analytics.php';
+        require_once HOME_DIRFILE.'analytics.php';
         ?>
             </div>    
             <script>            
